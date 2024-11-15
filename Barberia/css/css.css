@@ -1,0 +1,17 @@
+/* Agrega esto en tu archivo CSS */
+.card {
+    border: 2px solid #3c3a3a; /* Color dorado para bordes */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Sombra para un efecto de profundidad */
+}
+
+.hero-body {
+    background-image: url("{% static 'img/barba.jpg' %}");
+    background-size: cover;
+}
+.image img {
+    transition: transform 0.3s ease;
+}
+
+.image:hover img {
+    transform: scale(1.05);
+}

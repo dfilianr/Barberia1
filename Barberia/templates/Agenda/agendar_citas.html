@@ -1,0 +1,46 @@
+{% extends 'formulario.html' %}
+
+{% load static %}
+
+{% block formulario %}
+
+    <!-- Selección de fecha -->
+    <div class="field">
+        <label class="label" for="plan">Selecciona tu plan</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+           {{ form.plan }}
+          </div>
+        </div>
+      </div>
+
+    <div class="field">
+        <label class="label" for="fecha">Selecciona La Fecha</label>
+        <div class="control date" >
+          <div class="calendar" >
+           {{ form.fecha }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Selección de hora -->
+       <div class="field">
+        <label class="label" for="horarioAtencion">Selecciona la Hora</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+           {{ form.horarioAtencion }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Selección de barbero -->
+      <div class="field">
+        <label class="label" for="barbero">Selecciona tu barbero</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+           {{ form.barbero }}
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block secciones %}
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <h1 class="title">Iniciar Sesión</h1>
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="field">
+                            <label class="label">Nombre de usuario</label>
+                            <div class="control">
+                                {{ form.username | add_class:'input'}}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Contraseña</label>
+                            <div class="control">
+                                {{ form.password | add_class:'input' }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">Iniciar Sesión</button>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <p>¿No tienes una cuenta? <a href="{% url 'regisUsua' %}">Regístrate aquí</a>.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block jvscript %}
+    <script type="application/javascript">
+
+    {% if form.errors %}
+        var errors = '';
+        {% for field in form %}
+            {% for error in field.errors %}
+                errors += '{{ error|escapejs }}<br>';  // Cada error de campo en una nueva línea usando <br>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            errors += '{{ error|escapejs }}<br>';  // Cada error no asociado a un campo en una nueva línea usando <br>
+        {% endfor %}
+        Swal.fire({
+            title: 'Error!',
+            html: errors,  // Usamos html en lugar de text para interpretar <br> como saltos de línea
+            icon: 'error',
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                content: 'swal2-content'
+            }
+        });
+    {% endif %}
+        </script>
+
+
+
+{% endblock %}

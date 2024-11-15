@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block secciones %}<style>
+
+
+</style>
+<style>
+    .custom-title {
+        color: #3c3a3a; /* Cambia a tu color deseado */
+    }
+</style>
+
+<div class="columns is-centered">
+    <div class="column is-half">
+        <h1 class="title has-text-centered custom-title">Crear Cuenta</h1>
+
+        <form method="POST" action="" class="box" style="border: 2px solid #00f8c1;">
+            {% csrf_token %}
+            {{ form }}
+
+            <!-- Botón de registro -->
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary is-fullwidth has-text-weight-semibold" style="background-color: #3c3a3a; border-color: #3c3a3a;">
+                        <span class="icon">
+                            <i class="fas fa-user-plus"></i>
+                        </span>
+                        <span>Registrarse</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <p class="has-text-centered">
+            ¿Ya tienes una cuenta? <a href="{% url 'iniSesion' %}" class="has-text-link">Inicia sesión aquí</a>.
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block jvscript %}
+<script type="application/javascript">
+    {% if form.errors %}
+        var errors = '';
+        {% for field in form %}
+            {% for error in field.errors %}
+                errors += '{{ error|escapejs }}<br>';
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            errors += '{{ error|escapejs }}<br>';
+        {% endfor %}
+        Swal.fire({
+            title: '¡Error!',
+            html: errors,
+            icon: 'error',
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                content: 'swal2-content'
+            },
+            confirmButtonColor: '#00f8c1',
+        });
+    {% endif %}
+</script>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "index.html" %}
+{% block header %}
+    {% include "navbar.html" %}
+{% endblock %}
+{% load static %}
+
+{% block secciones %}
+<!-- Sección de bienvenida -->
+    <section class="hero is-medium is-primary is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Bienvenido a Barbería Elegante
+                </h1>
+                <h2 class="subtitle">
+                    El mejor estilo para tu cabello y barba
+                </h2>
+                <a href="#servicios" class="button is-link is-light">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+<
+    <!-- Sección de servicios -->
+    <section id="servicios" class="section">
+        <div class="container">
+            <h2 class="title has-text-centered">Nuestros Servicios</h2>
+            <div class="columns is-multiline">
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{% static 'img/corte.jpg' %}" alt="Corte de cabello">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">Corte de Cabello</h3>
+                            <p>Los mejores cortes con estilo clásico y moderno.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src={% static "img/barba.jpg" %} alt="Arreglo de barba">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">Arreglo de Barba</h3>
+                            <p>Cuida y define tu barba con nuestros expertos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src={% static "img/capilar.jpg" %} alt="Tratamiento capilar">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">Tratamiento Capilar</h3>
+                            <p>Rejuvenece tu cabello con nuestros tratamientos especializados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de galería -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2 class="title has-text-centered">Galería de Estilos</h2>
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter">
+                    <figure class="image is-4by3">
+                        <img src={% static "img/fade.jpg" %} alt="Estilo 1">
+                    </figure>
+                </div>
+                <div class="column is-one-quarter">
+                    <figure class="image is-4by3">
+                        <img src={% static "img/taperfade.jpg" %} alt="Estilo 2">
+                    </figure>
+                </div>
+                <div class="column is-one-quarter">
+                    <figure class="image is-4by3">
+                        <img src={% static "img/corte3.jpg" %} alt="Estilo 3">
+                    </figure>
+                </div>
+                <div class="column is-one-quarter">
+                    <figure class="image is-4by3">
+                        <img src={% static "img/buzcut.jpg" %} alt="Estilo 4">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de testimonios -->
+    <section id="testimonios" class="section">
+        <div class="container">
+            <h2 class="title has-text-centered">Testimonios de Clientes</h2>
+            <div class="columns is-multiline">
+                <div class="column is-half">
+                    <article class="message is-primary">
+                        <div class="message-body">
+                            "El servicio es excelente. Salí de la barbería con un corte increíble, ¡altamente recomendable!"
+                            <br><strong>- Carlos M.</strong>
+                        </div>
+                    </article>
+                </div>
+                <div class="column is-half">
+                    <article class="message is-link">
+                        <div class="message-body">
+                            "La atención y el profesionalismo son de primera. Definitivamente vuelvo cada mes."
+                            <br><strong>- Juan P.</strong>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock  %}

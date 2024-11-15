@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block header %}
+    {% include 'navbar.html' %}
+{% endblock %}
+{% load static %}
+{% block secciones %}
+    <h1 class="title has-text-centered">Tus Citas Agendadas</h1>
+
+    <div class="table-container">
+        <table class="table is-fullwidth is-striped">
+            <thead>
+                <tr>
+                    <th>Barbero</th>
+                    <th>Fecha</th>
+                    <th>Servicio</th>
+                    <th>Horario de Atención</th> <!-- Este campo puede ser opcional. -->
+                    <th>Horario de Atención</th> <!-- Este campo puede ser opcional. -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in Agenda %}
+                    <tr>
+                        <td>{{ object.barbero }}</td>
+                        <td>{{ object.fecha | date:"d/m/Y " }}</td>
+                        <td>{{ object.get_plan_display }}</td>
+
+                        <td>{{ object.get_horarioAtencion_display }}</td> <!-- Aquí puedes agregar lógica si manejas diferentes estados de la cita -->
+                        <td>
+                            <a href="{% url  'actualizaragenda' object.id %}"><button class="button is-warning">Editar</button></a>
+                            <a href="{% url  'eliminaragenda' object.id %}"> <button class="button is-danger">Eliminar</button></a>
+                        </td>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="has-text-centered">No tienes citas agendadas.</td>
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

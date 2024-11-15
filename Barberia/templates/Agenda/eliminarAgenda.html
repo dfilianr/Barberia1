@@ -1,0 +1,30 @@
+{% extends "baseEliminar.html" %}
+{% block header %}
+    {% include "navbar.html" %}
+{% endblock %}
+{% load static %}
+
+{% block eliminarbase %}
+
+
+          <div class="table-container">
+            <table class="table is-fullwidth is-striped">
+                <thead>
+                    <tr>
+                        <th>Barbero</th>
+                        <th>Fecha</th>
+                        <th>Servicio</th>
+                        <th>Horario de Atención</th> <!-- Este campo puede ser opcional. -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ object.barbero }}</td>
+                        <td>{{ object.fecha | date:"d/m/Y " }}</td>
+                        <td>{{ object.get_plan_display }}</td>
+                        <td>{{ object.get_horarioAtencion_display }}</td> 
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+{% endblock %}

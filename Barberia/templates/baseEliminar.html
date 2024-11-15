@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% block header %}
+    {% include 'navbar.html' %}
+{% endblock %}
+{% load static %}
+
+{% block secciones %}
+    <div class="container">
+        <h1 class="title">{{ tituloform }}</h1>
+        <form  class="col s12" enctype="multipart/form-data" method="post" action="{{ action_save }}">
+
+                <h1 class="title has-text-centered">{{ table_title }}</h1>
+
+        <!-- Mensaje de confirmación -->
+            <div class="notification is-warning">
+                <p>Piensalo Bien...</p>
+
+            </div>
+            {% csrf_token %}
+
+            {% block eliminarbase %}
+
+            {% endblock %}
+
+         <div class="buttons has-text-centered">
+              <a href="#"><button type="submit" class="button is-danger" name="action">Sí, eliminar</button></a>
+              <a href="{{ listar_url }}"><button type="submit" name="action" class="button is-light">Cancelar</button></a>
+
+         </div>
+        <div class="buttons has-text-centered">
+                    </div>
+        </form>
+{% endblock %}

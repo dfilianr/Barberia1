@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% block header %}
+    {% include 'navbar.html' %}
+{% endblock %}
+{% load static %}
+
+{% block secciones %}
+    <div class="container">
+        <h1 class="title">{{ tituloform }}</h1>
+        <form  class="col s12" enctype="multipart/form-data" method="post" action="{{ action_save }}">
+
+            {% csrf_token %}
+
+            {% block formulario %}
+
+            {% endblock %}
+
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary" name="action">{{ boton }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block jvscript %}
+    <script type="application/javascript">
+
+    {% if form.errors %}
+        var errors = '';
+        {% for field in form %}
+            {% for error in field.errors %}
+                errors += '{{ error|escapejs }}<br>';  // Cada error de campo en una nueva línea usando <br>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            errors += '{{ error|escapejs }}<br>';  // Cada error no asociado a un campo en una nueva línea usando <br>
+        {% endfor %}
+        Swal.fire({
+            title: 'Error!',
+            html: errors,  // Usamos html en lugar de text para interpretar <br> como saltos de línea
+            icon: 'error',
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                content: 'swal2-content'
+            }
+        });
+    {% endif %}
+        </script>
+
+{% endblock %}
